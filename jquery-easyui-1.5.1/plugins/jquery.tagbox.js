@@ -35,7 +35,7 @@ $(_2).next().find(".tagbox-label").remove();
 var _c=$(_2).tagbox("textbox");
 var ss=[];
 $.map($(_2).tagbox("getValues"),function(_d,_e){
-if(opts.multiple || ($.trim(_d)!=null && $.trim(_d)!="")){
+if(_4.multiple || ($.trim(_d)!=null && $.trim(_d)!="")){
 var _f=_4.finder.getRow(_2,_d);
 var _10=_4.tagFormatter.call(_2,_d,_f);
 var cs={};
@@ -100,7 +100,7 @@ return;
 _1f.onRemoveTag.call(_1d,_21[_20]);
 _21.splice(_20,1);
 $(_1d).tagbox("setValues",_21);
-if(!opts.multiple && !opts.editable){
+if(!_1f.multiple && !_1f.editable){
 $(_1d).tagbox("validate");
 }
 }else{
@@ -163,7 +163,7 @@ $(_2d).tagbox("hidePanel");
 var v=$.trim($(_2d).tagbox("getText"));
 if(v!==""){
 var _32=$(_2d).tagbox("getValues");
-if(!opts.multiple){
+if(!_2e.multiple){
 _32=[];
 }
 _32.push(v);
