@@ -35,6 +35,7 @@ $(_2).next().find(".tagbox-label").remove();
 var _c=$(_2).tagbox("textbox");
 var ss=[];
 $.map($(_2).tagbox("getValues"),function(_d,_e){
+if(opts.multiple || ($.trim(_d)!=null && $.trim(_d)!="")){
 var _f=_4.finder.getRow(_2,_d);
 var _10=_4.tagFormatter.call(_2,_d,_f);
 var cs={};
@@ -48,12 +49,28 @@ var _11=$("<span class=\"tagbox-label\"></span>").insertBefore(_c).html(_10);
 _11.attr("tagbox-index",_e);
 _11.attr("style",cs.s).addClass(cs.c);
 $("<a href=\"javascript:;\" class=\"tagbox-remove\"></a>").appendTo(_11);
+}
 });
 _12(_2);
 $(_2).combobox("setText","");
 };
 };
 function _12(_13,_14){
+/*reset input-text size start*/
+var opts=$(_13).tagbox("options");
+var tbt=$(_13).tagbox("textbox");
+var tb=tbt.closest(".textbox");
+var w=0;
+tb.find(".tagbox-label").each(function(i,dom){
+w+=$(dom).outerWidth(true);
+});
+if(tb.width()-w>20){
+var pw=tbt.outerWidth(true)-tbt.width();
+tbt.width(tb.width()-w-pw);
+}else{
+tbt.width("auto");
+}
+/*reset input-text size end*/
 var _15=$(_13).next();
 var _16=_14?$(_14):_15.find(".tagbox-label");
 if(_16.length){
@@ -83,6 +100,9 @@ return;
 _1f.onRemoveTag.call(_1d,_21[_20]);
 _21.splice(_20,1);
 $(_1d).tagbox("setValues",_21);
+if(!opts.multiple && !opts.editable){
+$(_1d).tagbox("validate");
+}
 }else{
 var _22=$(e.target).closest(".tagbox-label");
 if(_22.length){
@@ -143,6 +163,9 @@ $(_2d).tagbox("hidePanel");
 var v=$.trim($(_2d).tagbox("getText"));
 if(v!==""){
 var _32=$(_2d).tagbox("getValues");
+if(!opts.multiple){
+_32=[];
+}
 _32.push(v);
 $(_2d).tagbox("setValues",_32);
 }
