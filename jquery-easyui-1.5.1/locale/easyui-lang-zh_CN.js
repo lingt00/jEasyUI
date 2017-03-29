@@ -89,7 +89,21 @@ $.map(['validatebox','textbox','passwordbox','filebox','searchbox',
 			}else{
 				m.removeClass("error-message-invalid");
 			}
-			m.width(opts.width);
+			m.css({position:"absolute",margin:0,padding:0});
+			if(opts.labelPosition=="before"){
+				var textspan = t.closest(".textbox");
+				var textf= t.parent();
+				var textLabel = textspan.siblings(".textbox-label");
+				var wd = textspan.outerWidth(true)+textLabel.outerWidth(true);
+				console.info(wd);
+				if(wd<=textf.innerWidth()){
+					m.width(opts.width-textLabel.outerWidth(true));
+					m.css({"marginLeft":textLabel.outerWidth(true)});
+				}
+			}else{
+				m.width(opts.width);
+			}
+
 			if(action=="show"){
 				m.html(message);
 			}else{
@@ -131,3 +145,22 @@ $.map(['tagbox',"taggridbox"], function(plugin){
 		}});
 	}
 });
+
+if ($.fn.datebox){
+	$.fn.datebox.defaults.buttons = [{text:function(_30){
+		return $(_30).datebox("options").okText;
+	},handler:function(_31){
+		var _1b=$.data(_31,"datebox");
+		var _1c=_1b.options;
+		var _1d=_1b.calendar.calendar("options").current;
+		if(_1d){
+			var _1f = _1c.formatter.call(_31,_1d);
+			$(_31).combo("setText",_1f).combo("setValue",_1f);
+			$(_31).combo("hidePanel");
+		}
+	}},{text:function(_32){
+		return $(_32).datebox("options").closeText;
+	},handler:function(_33){
+		$(this).closest("div.combo-panel").panel("close");
+	}}]
+}
