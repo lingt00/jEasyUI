@@ -5,9 +5,16 @@
 	<title>Basic ComboGrid - jQuery EasyUI Demo</title>
 	<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
 	<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
-	<link rel="stylesheet" type="text/css" href="../demo.css">
+	<link rel="stylesheet" type="text/css" href="../../demo/demo.css">
 	<script type="text/javascript" src="../../jquery.min.js"></script>
-	<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="../../easyloader.js"></script>
+	<script>
+		easyloader.locale="zh_CN";
+		easyloader.css=false;
+		easyloader.onLoad=function(model){
+			console.info("loading -> "+model);
+		};
+	</script>
 </head>
 <body>
 	<h2>Basic ComboGrid</h2>
