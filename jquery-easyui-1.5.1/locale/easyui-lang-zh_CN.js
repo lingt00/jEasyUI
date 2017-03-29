@@ -95,7 +95,6 @@ $.map(['validatebox','textbox','passwordbox','filebox','searchbox',
 				var textf= t.parent();
 				var textLabel = textspan.siblings(".textbox-label");
 				var wd = textspan.outerWidth(true)+textLabel.outerWidth(true);
-				console.info(wd);
 				if(wd<=textf.innerWidth()){
 					m.width(opts.width-textLabel.outerWidth(true));
 					m.css({"marginLeft":textLabel.outerWidth(true)});
