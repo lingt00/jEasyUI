@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Basic DateBox - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="../demo.css">
+	<script type="text/javascript" src="../../jquery.min.js"></script>
+	<!--<script type="text/javascript" src="../../jquery.easyui.min.js"></script>-->
+	<!--<script type="text/javascript" src="../../locale/easyui-lang-zh_CN.js"></script>-->
+
+	<script type="text/javascript" src="../../easyloader.js"></script>
+	<script>
+		easyloader.locale="zh_CN";
+		easyloader.css=false;
+	</script>
+</head>
+<body>
+<h2>Basic doublecombo</h2>
+<div style="margin:20px 0;">
+	<div class="easyui-panel" style="width:100%;max-width:800px;padding:30px 60px;">
+		<div style="margin-bottom:20px;width: 100%;">
+			<input class="easyui-doublecombo" id="cc" name="startDate" name2="endDate" value="" label="DateRange:" labelPosition="top" labelWidth="80"
+				   data-options="validateOnCreate:true,required:true,editable:true,width:400"/>
+		</div>
+		<button onclick="$('#cc').doublecombo('validate');">验证</button>
+	</div>
+</div>
+</body>
+</html>
