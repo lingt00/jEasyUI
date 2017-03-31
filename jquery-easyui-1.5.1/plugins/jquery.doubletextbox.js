@@ -12,18 +12,18 @@
  */
 (function($){
 var _1=0;
-function _2(_3,spacer){
+function _2(_3,separator){
 $(_3).addClass("textbox-f").hide();
 var jj=[];
 jj.push("<span class=\"textbox\">");
 jj.push("<input class=\"textbox-text\" autocomplete=\"off\">");
-jj.push("<span class=\"textbox-spacer\">"+spacer+"</span>");
+jj.push("<span class=\"textbox-separator\">"+separator+"</span>");
 jj.push("<input class=\"textbox-text\" autocomplete=\"off\">");
 jj.push("<input type=\"hidden\" class=\"textbox-value\">");
 jj.push("<input type=\"hidden\" class=\"textbox-value\">");
 jj.push("</span>");
 var _4=$(jj.join("")).insertAfter(_3);
-_4.find(".textbox-spacer").css({margin:"0px 5px",padding:"0px",display:"inline-block",verticalAlign:"middle",position:"relative",width:"auto",height:"100%"});
+_4.find(".textbox-separator").css({margin:"0px 5px",padding:"0px",display:"inline-block",verticalAlign:"middle",position:"relative",width:"auto",height:"100%"});
 var _5=$(_3).attr("name");
 if(_5){
 _4.find("input.textbox-value:eq(0)").attr("name",_5);
@@ -45,8 +45,8 @@ var _a2="_easyui_textbox_input"+(++_1);
 tb.addClass(_9.cls);
 tb.find(".textbox-text").remove();
 $("<input id=\""+_a2+"\" type=\""+_9.type+"\" class=\"textbox-text\" autocomplete=\"off\">").prependTo(tb);
-tb.find(".textbox-spacer").remove();
-$("<span class=\"textbox-spacer\">"+_9.spacer+"</span>").css({margin:"0px 5px",padding:"0px",display:"inline-block",verticalAlign:"middle",position:"relative",width:"auto",height:"100%"}).prependTo(tb);
+tb.find(".textbox-separator").remove();
+$("<span class=\"textbox-separator\">"+_9.separator+"</span>").css({margin:"0px 5px",padding:"0px",display:"inline-block",verticalAlign:"middle",position:"relative",width:"auto",height:"100%"}).prependTo(tb);
 $("<input id=\""+_a+"\" type=\""+_9.type+"\" class=\"textbox-text\" autocomplete=\"off\">").prependTo(tb);
 $("#"+_a).attr("tabindex",$(_7).attr("tabindex")||"").css("text-align",_7.style.textAlign||"");
 $("#"+_a2).attr("tabindex",$(_7).attr("tabindex")||"").css("text-align",_7.style.textAlign||"");
@@ -126,7 +126,7 @@ var _18=tb.find(".textbox-text");
 var btn=tb.find(".textbox-button");
 var _19=tb.find(".textbox-addon");
 var _1a=_19.find(".textbox-icon");
-var spacer=tb.find(".textbox-spacer");
+var separator=tb.find(".textbox-separator");
 if(_15.height=="auto"){
 _18.css({margin:"",paddingTop:"",paddingBottom:"",height:"",lineHeight:""});
 }
@@ -147,14 +147,14 @@ btn.linkbutton("resize",{height:tb.height()});
 }else{
 btn.linkbutton("resize",{width:"100%"});
 }
-var _1b=tb.width()-_1a.length*_15.iconWidth-_1c("left")-_1c("right")-spacer.outerWidth(true);
+var _1b=tb.width()-_1a.length*_15.iconWidth-_1c("left")-_1c("right")-separator.outerWidth(true);
 var _1d=_15.height=="auto"?_18.outerHeight():(tb.height()-_1c("top")-_1c("bottom"));
 _19.css(_15.iconAlign,_1c(_15.iconAlign)+"px");
 _19.css("top",_1c("top")+"px");
 _1a.css({width:_15.iconWidth+"px",height:_1d+"px"});
 _18.css({paddingLeft:(_12.style.paddingLeft||""),paddingRight:(_12.style.paddingRight||""),marginLeft:_1e("left"),marginRight:_1e("right"),marginTop:_1c("top"),marginBottom:_1c("bottom")});
 _18.css({paddingTop:0,paddingBottom:0,height:_1d+"px",lineHeight:_1d+"px"});
-spacer.css({paddingTop:0,paddingBottom:0,height:_1d+"px",lineHeight:_1d+"px"});
+separator.css({paddingTop:0,paddingBottom:0,height:_1d+"px",lineHeight:_1d+"px"});
 _18._outerWidth(_1b/2);
 _15.onResizing.call(_12,_15.width,_15.height);
 if(!_17){
@@ -392,10 +392,10 @@ _43.options.originalValueEnd=_3f.valueEnd;
 }
 }else{
 var _4h = $.extend({},$.fn.doubletextbox.defaults,$.fn.doubletextbox.parseOptions(this),_3f);
-_43=$.data(this,"doubletextbox",{options:_4h,doubletextbox:_2(this,_4h.spacer)});
+_43=$.data(this,"doubletextbox",{options:_4h,doubletextbox:_2(this,_4h.separator)});
 _43.options.originalValue=_43.options.value;
 if(_43.options.value){
-var _4v=_43.options.value.split(_43.options.spacer);
+var _4v=_43.options.value.split(_43.options.separator);
 _43.options.originalValueBegin=_4v[0];
 _43.options.originalValueEnd=_4v.length>1?_4v[1]:_4v[0];
 _43.options.valueBegin=_4v[0];
@@ -498,7 +498,7 @@ var _51b =_51;
 var _51e =_51;
 if(_51){
 if(typeof _51=="string"){
-_51 = _51.split(_52.options.spacer);
+_51 = _51.split(_52.options.separator);
 }
 _51b=_51[0];
 _51e=_51.length>1?_51[1]:_51[0];
@@ -507,7 +507,7 @@ $(this).doubletextbox("setTextBegin",_51b);
 $(this).doubletextbox("setTextEnd",_51e);
 _52.doubletextbox.find(".textbox-value:eq(0)").val(_51b);
 _52.doubletextbox.find(".textbox-value:eq(1)").val(_51e);
-$(this).val(_51b+_52.options.spacer+_51e);
+$(this).val(_51b+_52.options.separator+_51e);
 });
 },setValueBegin:function(jq,_53){
 return jq.each(function(){
@@ -640,9 +640,9 @@ return _8f(jq[0]);
 }};
 $.fn.doubletextbox.parseOptions=function(_68){
 var t=$(_68);
-return $.extend({},$.fn.validatebox.parseOptions(_68),$.parser.parseOptions(_68,["valueBegin","valueEnd","originalValueBegin","originalValueEnd","promptBegin","promptEnd","suffix","spacer","name2","prompt","iconCls","iconAlign","buttonText","buttonIcon","buttonAlign","label","labelPosition","labelAlign",{multiline:"boolean",iconWidth:"number",labelWidth:"number"}]),{value:(t.val()||undefined),type:(t.attr("type")?t.attr("type"):undefined),name2:(t.attr("name2")?t.attr("name2"):undefined)});
+return $.extend({},$.fn.validatebox.parseOptions(_68),$.parser.parseOptions(_68,["valueBegin","valueEnd","originalValueBegin","originalValueEnd","promptBegin","promptEnd","suffix","separator","name2","prompt","iconCls","iconAlign","buttonText","buttonIcon","buttonAlign","label","labelPosition","labelAlign",{multiline:"boolean",iconWidth:"number",labelWidth:"number"}]),{value:(t.val()||undefined),type:(t.attr("type")?t.attr("type"):undefined),name2:(t.attr("name2")?t.attr("name2"):undefined)});
 };
-$.fn.doubletextbox.defaults=$.extend({},$.fn.validatebox.defaults,{valueBegin:"",valueEnd:"",suffix:"2",spacer:"--",name2:"",doSize:true,width:"auto",height:"auto",cls:null,prompt:"",value:"",type:"text",icons:[],iconCls:null,iconAlign:"right",iconWidth:18,buttonText:"",buttonIcon:null,buttonAlign:"right",label:null,labelWidth:"auto",labelPosition:"before",labelAlign:"left",inputEvents:{blur:function(e){
+$.fn.doubletextbox.defaults=$.extend({},$.fn.validatebox.defaults,{valueBegin:"",valueEnd:"",suffix:"2",separator:"--",name2:"",doSize:true,width:"auto",height:"auto",cls:null,prompt:"",value:"",type:"text",icons:[],iconCls:null,iconAlign:"right",iconWidth:18,buttonText:"",buttonIcon:null,buttonAlign:"right",label:null,labelWidth:"auto",labelPosition:"before",labelAlign:"left",inputEvents:{blur:function(e){
 var t=$(e.data.target);
 var _69=t.doubletextbox("options");
 if(t.doubletextbox("getValueBegin")!=_69.valueBegin){
