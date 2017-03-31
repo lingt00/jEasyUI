@@ -152,7 +152,9 @@ var _1d=_15.height=="auto"?_18.outerHeight():(tb.height()-_1c("top")-_1c("bottom
 _19.css(_15.iconAlign,_1c(_15.iconAlign)+"px");
 _19.css("top",_1c("top")+"px");
 _1a.css({width:_15.iconWidth+"px",height:_1d+"px"});
-_18.css({paddingLeft:(_12.style.paddingLeft||""),paddingRight:(_12.style.paddingRight||""),marginLeft:_1e("left"),marginRight:_1e("right"),marginTop:_1c("top"),marginBottom:_1c("bottom")});
+_18.css({paddingLeft:(_12.style.paddingLeft||""),paddingRight:(_12.style.paddingRight||""),marginLeft:0,marginRight:0,marginTop:_1c("top"),marginBottom:_1c("bottom")});
+_18.first().css({marginLeft:_1e("left"),marginRight:0});
+_18.last().css({marginLeft:0,marginRight:_1e("right")});
 _18.css({paddingTop:0,paddingBottom:0,height:_1d+"px",lineHeight:_1d+"px"});
 separator.css({paddingTop:0,paddingBottom:0,height:_1d+"px",lineHeight:_1d+"px"});
 _18._outerWidth(_1b/2);

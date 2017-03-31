@@ -40,6 +40,11 @@ _9.options.onHidePanel.call(_8);
 }});
 }
 var _a=$.extend(true,[],_5.icons);
+if(_5.hasDownArrow){
+_a.push({iconCls:"combo-arrow",handler:function(e){
+_f(e.data.target);
+}});
+}
 $(_3).addClass("combo-f").doubletextbox($.extend({},_5,{icons:_a,onChange:function(){
 }}));
 $(_3).attr("comboName",$(_3).attr("textboxName"));
@@ -314,9 +319,9 @@ _35(this,_54);
 }};
 $.fn.doublecombo.parseOptions=function(_56){
 var t=$(_56);
-return $.extend({},$.fn.doubletextbox.parseOptions(_56),$.parser.parseOptions(_56,["panelAlign",{panelWidth:"number",delay:"number",reversed:"boolean",selectOnNavigation:"boolean"},{panelMinWidth:"number",panelMaxWidth:"number",panelMinHeight:"number",panelMaxHeight:"number"}]),{panelHeight:(t.attr("panelHeight")=="auto"?"auto":parseInt(t.attr("panelHeight"))||undefined)});
+return $.extend({},$.fn.doubletextbox.parseOptions(_56),$.parser.parseOptions(_56,["panelAlign",{panelWidth:"number",hasDownArrow:"boolean",delay:"number",reversed:"boolean",selectOnNavigation:"boolean"},{panelMinWidth:"number",panelMaxWidth:"number",panelMinHeight:"number",panelMaxHeight:"number"}]),{panelHeight:(t.attr("panelHeight")=="auto"?"auto":parseInt(t.attr("panelHeight"))||undefined)});
 };
-$.fn.doublecombo.defaults=$.extend({},$.fn.doubletextbox.defaults,{inputEvents:{click:_15,keydown:_1a,paste:_1a,drop:_1a,blur:$.fn.doubletextbox.defaults.inputEvents.blur},panelWidth:null,panelHeight:200,panelMinWidth:null,panelMaxWidth:null,panelMinHeight:null,panelMaxHeight:null,panelAlign:"left",reversed:false,selectOnNavigation:true,delay:200,keyHandler:{up:function(e){
+$.fn.doublecombo.defaults=$.extend({},$.fn.doubletextbox.defaults,{inputEvents:{click:_15,keydown:_1a,paste:_1a,drop:_1a,blur:$.fn.doubletextbox.defaults.inputEvents.blur},panelWidth:null,panelHeight:200,panelMinWidth:null,panelMaxWidth:null,panelMinHeight:null,panelMaxHeight:null,panelAlign:"left",reversed:false,selectOnNavigation:true,hasDownArrow:true,delay:200,keyHandler:{up:function(e){
 },down:function(e){
 },left:function(e){
 },right:function(e){
