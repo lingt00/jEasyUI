@@ -384,11 +384,11 @@ return this.each(function(){
 var _43=$.data(this,"doubletextbox");
 if(_43){
 $.extend(_43.options,_3f);
-if(_3f.valueBegin!=undefined){
-_43.options.originalValueBegin=_3f.valueBegin;
+if(_43.options.valueBegin!=undefined){
+_43.options.originalValueBegin=_43.options.valueBegin;
 }
-if(_3f.valueEnd!=undefined){
-_43.options.originalValueEnd=_3f.valueEnd;
+if(_43.options.valueEnd!=undefined){
+_43.options.originalValueEnd=_43.options.valueEnd;
 }
 }else{
 var _4h = $.extend({},$.fn.doubletextbox.defaults,$.fn.doubletextbox.parseOptions(this),_3f);
@@ -396,10 +396,12 @@ _43=$.data(this,"doubletextbox",{options:_4h,doubletextbox:_2(this,_4h.separator
 _43.options.originalValue=_43.options.value;
 if(_43.options.value){
 var _4v=_43.options.value.split(_43.options.separator);
+if(_4v.length){
 _43.options.originalValueBegin=_4v[0];
 _43.options.originalValueEnd=_4v.length>1?_4v[1]:_4v[0];
 _43.options.valueBegin=_4v[0];
 _43.options.valueEnd=_4v.length>1?_4v[1]:_4v[0];
+}
 }
 }
 _6(this);
@@ -494,12 +496,12 @@ $(this).doubletextbox("validate");
 },initValue:function(jq,_51){
 return jq.each(function(){
 var _52=$.data(this,"doubletextbox");
-var _51b =_51;
-var _51e =_51;
-if(_51){
-if(typeof _51=="string"){
+var _51b="";
+var _51e="";
+if(!$.isArray(_51)){
 _51 = _51.split(_52.options.separator);
 }
+if(_51.length){
 _51b=_51[0];
 _51e=_51.length>1?_51[1]:_51[0];
 }
@@ -508,6 +510,19 @@ $(this).doubletextbox("setTextEnd",_51e);
 _52.doubletextbox.find(".textbox-value:eq(0)").val(_51b);
 _52.doubletextbox.find(".textbox-value:eq(1)").val(_51e);
 $(this).val(_51b+_52.options.separator+_51e);
+});
+},setValues:function(jq,_53){
+return jq.each(function(){
+var _54=$.data(this,"doubletextbox").options;
+var _55=$(this).doubletextbox("getValueBegin");
+var _55e=$(this).doubletextbox("getValueEnd");
+$(this).doubletextbox("initValue",_53);
+var _55f=$(this).doubletextbox("getValueBegin");
+var _55ef=$(this).doubletextbox("getValueEnd");
+if(_55f!=_55 || _55e!=_55ef){
+_54.onChange.call(this,_53,[_55,_55e],"begin");
+$(this).closest("form").trigger("_change",[this]);
+}
 });
 },setValueBegin:function(jq,_53){
 return jq.each(function(){
