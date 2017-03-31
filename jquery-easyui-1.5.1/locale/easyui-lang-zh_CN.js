@@ -163,3 +163,53 @@ if ($.fn.datebox){
 		$(this).closest("div.combo-panel").panel("close");
 	}}]
 }
+
+if ($.fn.doubledatebox){
+	$.fn.doubledatebox.defaults.currentText = '今天';
+	$.fn.doubledatebox.defaults.closeText = '取消';
+	$.fn.doubledatebox.defaults.okText = '确定';
+	$.fn.doubledatebox.defaults.beginText = '开始日期:';
+	$.fn.doubledatebox.defaults.endText = '结束日期:';
+	$.fn.doubledatebox.defaults.formatter = function(date){
+		var y = date.getFullYear();
+		var m = date.getMonth()+1;
+		var d = date.getDate();
+		return y+'-'+(m<10?('0'+m):m)+'-'+(d<10?('0'+d):d);
+	};
+	$.fn.doubledatebox.defaults.parser = function(s){
+		if (!s) return new Date();
+		var ss = s.split('-');
+		var y = parseInt(ss[0],10);
+		var m = parseInt(ss[1],10);
+		var d = parseInt(ss[2],10);
+		if (!isNaN(y) && !isNaN(m) && !isNaN(d)){
+			return new Date(y,m-1,d);
+		} else {
+			return new Date();
+		}
+	};
+	$.fn.doubledatebox.defaults.showFormatter=function(_34){
+		var y=_34.getFullYear();
+		var m=_34.getMonth()+1;
+		var d=_34.getDate();
+		return y+"年"+m+"月"+d+"日";
+	}
+	$.fn.doubledatebox.defaults.topButtons=[
+		{text:"今天",handler:function(target){
+
+		}},{text:"昨天",handler:function(target){
+
+		}},{text:"本周",handler:function(target){
+
+		}},{text:"上周",handler:function(target){
+
+		}},{text:"本月",handler:function(target){
+
+		}},{text:"上月",handler:function(target){
+
+		}},{text:"今年",handler:function(target){
+
+		}},{text:"去年",handler:function(target){
+
+		}}];
+}
