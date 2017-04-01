@@ -203,14 +203,16 @@ if ($.fn.doubledatebox){
 		var tb=$(target).closest(".textbox").prev()[0];
 		var doubleText = $.data(tb,"doubledatebox");
 		var opts = doubleText.options;
-		var value1=$(tb).doubledatebox("getValueBegin");
-		var value2=$(tb).doubledatebox("getValueEnd");
-		if(idx==1 && isEmpty(value2)){
-			message="结束日期为必输项";
-		}else if(idx==1 && isEmpty(value1)){
-			message="开始日期为必输项";
-		}else{
-			message="开始日期,结束日期为必输项";
+		if(opts.required){
+			var value1=$(tb).doubledatebox("getValueBegin");
+			var value2=$(tb).doubledatebox("getValueEnd");
+			if(idx==1 && isEmpty(value2)){
+				message="结束日期为必输项";
+			}else if(idx==1 && isEmpty(value1)){
+				message="开始日期为必输项";
+			}else{
+				message="开始日期,结束日期为必输项";
+			}
 		}
 
 		if (t.hasClass('textbox-text')){

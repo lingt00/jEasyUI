@@ -15,7 +15,6 @@ function _1(_2){
 var _3=$.data(_2,"doubledatebox");
 var _4=_3.options;
 $(_2).addClass("datebox-f").doublecombo($.extend({},_4,{onShowPanel:function(){
-    console.info("onShowPanel...");
 _5(this);
 _6(this);
 _7(this);
