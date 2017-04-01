@@ -15,6 +15,7 @@ function _1(_2){
 var _3=$.data(_2,"doubledatebox");
 var _4=_3.options;
 $(_2).addClass("datebox-f").doublecombo($.extend({},_4,{onShowPanel:function(){
+    console.info("onShowPanel...");
 _5(this);
 _6(this);
 _7(this);
@@ -70,7 +71,7 @@ _58.find("td:eq(1)").html(_56.endText+_56.showFormatter.call(_a,_59.calendar("op
 }});
 }
 $(_2).doublecombo("doubletextbox").parent().addClass("datebox");
-$(_2).doubledatebox("initValue");
+//$(_2).doubledatebox("initValue");
 function _5(_c){
 var _d=$(_c).doubledatebox("options");
 var _e=$(_c).doublecombo("panel");
@@ -95,15 +96,12 @@ _49.find("td:eq(0)").html(opts.beginText);
 _49.find("td:eq(1)").html(opts.endText);
 }
 if(!_11.children("div.datebox-button-bottom").length){
-var _12=$("<div class=\"datebox-button datebox-button-bottom\"><table cellspacing=\"0\" cellpadding=\"0\" style=\"width:100%\"><tr></tr></table></div>").appendTo(_11);
-var tr=_12.find("tr");
+var _12=$("<div class=\"datebox-button datebox-button-bottom\"></div>").appendTo(_11);
 for(var i=0;i<_4.buttons.length;i++){
-var td=$("<td></td>").appendTo(tr);
 var btn=_4.buttons[i];
-var t=$("<a class=\"datebox-button-a\" href=\"javascript:;\"></a>").html($.isFunction(btn.text)?btn.text(_10):btn.text).appendTo(td);
+var t=$("<a class=\"datebox-button-a\" href=\"javascript:;\"></a>").html($.isFunction(btn.text)?btn.text(_10):btn.text).appendTo(_12);
 t.attr("datebox-button-index",i);
 }
-tr.find("td").css("width",(100/_4.buttons.length)+"%");
 }
 if(!_11.children("div.datebox-button-top").length && _4.topButtons.length){
 var _60=$("<div class=\"datebox-button datebox-button-top\"></div>").prependTo(_11);
