@@ -70,7 +70,7 @@ _58.find("td:eq(1)").html(_56.endText+_56.showFormatter.call(_a,_59.calendar("op
 }});
 }
 $(_2).doublecombo("doubletextbox").parent().addClass("datebox");
-//$(_2).doubledatebox("initValue");
+$(_2).doubledatebox("initValue");
 function _5(_c){
 var _d=$(_c).doubledatebox("options");
 var _e=$(_c).doublecombo("panel");
