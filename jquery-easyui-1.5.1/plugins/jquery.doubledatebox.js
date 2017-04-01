@@ -4,7 +4,7 @@
  */
 /**
  * doubledatebox - jQuery EasyUI
- *
+ * _cc
  * Dependencies:
  * 	 calendar
  *   doublecombo
