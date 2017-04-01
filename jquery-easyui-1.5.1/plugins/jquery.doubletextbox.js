@@ -222,9 +222,12 @@ tb.removeClass("textbox-invalid");
 }else{
 tb.addClass("textbox-invalid");
 }
-console.info("onValidate...");
 _22.onValidate.call(_21,_26);
-},err:function(target, message, action){},
+},err:function(target, message, action){
+if($.isFunction(_22.err)){
+_22.err(target,message,action);
+}
+},
 val:function(t){
 return $(t).val();
 }});
@@ -253,51 +256,37 @@ _2b.bind("blur.textbox",function(e){
 if(!tb.hasClass("textbox-focused")){
 return;
 }
-var i = $(e.target).index(".textbox-text");
-if(i==1){
-_2a.valueEnd=$(this).val();
-if(_2a.valueEnd==""){
-$(this).val(_2a.promptEnd).addClass("textbox-prompt");
-}else{
-$(this).removeClass("textbox-prompt");
-}
-}else{
-_2a.valueBegin=$(this).val();
-if(_2a.valueBegin==""){
-$(this).val(_2a.promptBegin).addClass("textbox-prompt");
-}else{
-$(this).removeClass("textbox-prompt");
-}
-}
+_7a(this,e);
 tb.removeClass("textbox-focused");
-console.info("validate-blur");
 }).bind("focus.textbox",function(e){
 _2a.hasFocusMe=true;
 if(tb.hasClass("textbox-focused")){
 return;
 }
-var i = $(e.target).index(".textbox-text");
-if(i==1){
-_2a.valueEnd=$(this).val();
-if(_2a.valueEnd==""){
-$(this).val(_2a.promptEnd).addClass("textbox-prompt");
-}else{
-$(this).removeClass("textbox-prompt");
-}
-}else{
-_2a.valueBegin=$(this).val();
-if(_2a.valueBegin==""){
-$(this).val(_2a.promptBegin).addClass("textbox-prompt");
-}else{
-$(this).removeClass("textbox-prompt");
-}
-}
+_7a(this,e);
 $(this).removeClass("textbox-prompt");
 tb.addClass("textbox-focused");
-console.info("validate-focused");
 });
 for(var _2c in _2a.inputEvents){
 _2b.bind(_2c+".textbox",{target:_28},_2a.inputEvents[_2c]);
+}
+function _7a(_7b,e){
+var i = $(e.target).index(".textbox-text");
+if(i==1){
+_2a.valueEnd=$(_7b).val();
+if(_2a.valueEnd==""){
+$(_7b).val(_2a.promptEnd).addClass("textbox-prompt");
+}else{
+$(_7b).removeClass("textbox-prompt");
+}
+}else{
+_2a.valueBegin=$(_7b).val();
+if(_2a.valueBegin==""){
+$(_7b).val(_2a.promptBegin).addClass("textbox-prompt");
+}else{
+$(_7b).removeClass("textbox-prompt");
+}
+}
 }
 }
 var _2d=tb.find(".textbox-addon");
@@ -475,7 +464,7 @@ _50.removeClass("textbox-prompt");
 _50.val(_4f.promptBegin).addClass("textbox-prompt");
 }
 }
-$(this).doubletextbox("validate");
+_50.validatebox("validate");
 });
 },setTextEnd:function(jq,_7e){
 return jq.each(function(){
@@ -493,7 +482,7 @@ _71.removeClass("textbox-prompt");
 _71.val(_7f.promptEnd).addClass("textbox-prompt");
 }
 }
-$(this).doubletextbox("validate");
+_71.validatebox("validate");
 });
 },initValue:function(jq,_51){
 return jq.each(function(){
