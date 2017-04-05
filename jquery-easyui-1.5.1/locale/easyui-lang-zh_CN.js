@@ -96,7 +96,7 @@ $.map(['validatebox','textbox','passwordbox','filebox','searchbox',
 				var textLabel = textspan.siblings(".textbox-label");
 				var wd = textspan.outerWidth(true)+textLabel.outerWidth(true);
 				if(wd<=textf.innerWidth()){
-					m.width(opts.width-textLabel.outerWidth(true));
+					m.width(textspan.outerWidth(true));
 					m.css({"marginLeft":textLabel.outerWidth(true)});
 				}
 			}else{
@@ -235,7 +235,7 @@ if ($.fn.doubledatebox){
 			var textLabel = textspan.siblings(".textbox-label");
 			var wd = textspan.outerWidth(true)+textLabel.outerWidth(true);
 			if(wd<=textf.innerWidth()){
-				m.width(opts.width-textLabel.outerWidth(true));
+				m.width(textspan.outerWidth(true));
 				m.css({"marginLeft":textLabel.outerWidth(true)});
 			}
 		}else{

@@ -12,7 +12,7 @@
  */
 (function($){
 var _1=0;
-function _2(_3,separator){
+function _2(_3,separator,suffix){
 $(_3).addClass("textbox-f").hide();
 var jj=[];
 jj.push("<span class=\"textbox\">");
@@ -30,6 +30,7 @@ _4.find("input.textbox-value:eq(0)").attr("name",_5);
 $(_3).removeAttr("name").attr("textboxName",_5);
 }
 var _n2=$(_3).attr("name2");
+if(!_n2 && _5){_n2=_5+suffix}
 if(_n2){
 _4.find("input.textbox-value:eq(1)").attr("name",_n2);
 $(_3).removeAttr("name2").attr("textboxName2",_n2);
@@ -231,6 +232,7 @@ _22.err(target,message,action);
 val:function(t){
 return $(t).val();
 }});
+    console.info(_22.err);
 _23.first().validatebox($.extend({},_23o,{value:$(_21).doubletextbox("getTextBegin")}));
 _23.last().validatebox($.extend({},_23o,{value:$(_21).doubletextbox("getTextEnd")}));
 };
@@ -383,7 +385,7 @@ _43.options.originalValueEnd=_43.options.valueEnd;
 }
 }else{
 var _4h = $.extend({},$.fn.doubletextbox.defaults,$.fn.doubletextbox.parseOptions(this),_3f);
-_43=$.data(this,"doubletextbox",{options:_4h,doubletextbox:_2(this,_4h.separator)});
+_43=$.data(this,"doubletextbox",{options:_4h,doubletextbox:_2(this,_4h.separator,_4h.suffix)});
 _43.options.originalValue=_43.options.value;
 if(_43.options.value){
 var _4v=_43.options.value.split(_43.options.separator);
@@ -648,7 +650,7 @@ $.fn.doubletextbox.parseOptions=function(_68){
 var t=$(_68);
 return $.extend({},$.fn.validatebox.parseOptions(_68),$.parser.parseOptions(_68,["valueBegin","valueEnd","originalValueBegin","originalValueEnd","promptBegin","promptEnd","suffix","separator","name2","prompt","iconCls","iconAlign","buttonText","buttonIcon","buttonAlign","label","labelPosition","labelAlign",{multiline:"boolean",iconWidth:"number",labelWidth:"number"}]),{value:(t.val()||undefined),type:(t.attr("type")?t.attr("type"):undefined),name2:(t.attr("name2")?t.attr("name2"):undefined)});
 };
-$.fn.doubletextbox.defaults=$.extend({},$.fn.validatebox.defaults,{valueBegin:"",valueEnd:"",suffix:"2",separator:"--",name2:"",doSize:true,width:"auto",height:"auto",cls:null,prompt:"",value:"",type:"text",icons:[],iconCls:null,iconAlign:"right",iconWidth:18,buttonText:"",buttonIcon:null,buttonAlign:"right",label:null,labelWidth:"auto",labelPosition:"before",labelAlign:"left",inputEvents:{blur:function(e){
+$.fn.doubletextbox.defaults=$.extend({},$.fn.validatebox.defaults,{valueBegin:"",valueEnd:"",suffix:"2",separator:"--",name2:"",doSize:true,width:"auto",height:"auto",cls:null,prompt:"",value:"",type:"text",icons:[],iconCls:null,iconAlign:"right",iconWidth:18,buttonText:"",buttonIcon:null,buttonAlign:"right",label:null,labelWidth:"auto",labelPosition:"before",labelAlign:"left",err:null,inputEvents:{blur:function(e){
 var t=$(e.data.target);
 var _69=t.doubletextbox("options");
 if(t.doubletextbox("getValueBegin")!=_69.valueBegin){
