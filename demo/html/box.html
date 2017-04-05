@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../easyui/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../easyui/themes/expand.css">
+    <link rel="stylesheet" type="text/css" href="demo.css">
+    <script type="text/javascript" src="../easyui/jquery.min.js"></script>
+    <script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../easyui/locale/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<div class="easyui-panel" title="基本输入文本框" data-options="collapsible:true,width:600" style="padding-top:20px;">
+    <div class="line">
+        <input class="easyui-textbox" label="Email(非必填):"
+               data-options="width:'400',height:32,validateOnCreate:true,required:false,editable:true,
+               labelPosition:'before',labelWidth:120,labelAlign:'right',prompt:'Enter a email address...',validType:'email'">
+    </div>
+    <div class="line">
+        <input class="easyui-textbox" label="Email(必填):"
+               data-options="width:'400',height:32,validateOnCreate:true,required:true,editable:true,
+               labelPosition:'before',labelWidth:120,labelAlign:'right',prompt:'Enter a email address...',validType:'email'">
+    </div>
+    <div class="line">
+        <input class="easyui-textbox" label="Email(禁编辑):"
+               data-options="width:'400',height:32,validateOnCreate:true,required:false,editable:true,
+               labelPosition:'before',labelWidth:120,labelAlign:'right',prompt:'Enter a email address...',validType:'email'">
+    </div>
+    <div class="line">
+        <input class="easyui-textbox" label="Email(禁用):"
+               data-options="width:'400',height:32,validateOnCreate:true,required:true,disabled:true,
+               labelPosition:'before',labelWidth:120,labelAlign:'right',prompt:'Enter a email address...',validType:'email'">
+    </div>
+    <div class="line">
+        <input class="easyui-textbox" label="Email(只读):"
+               data-options="width:'400',height:32,validateOnCreate:true,required:false,readonly:true,
+               labelPosition:'before',labelWidth:120,labelAlign:'right',prompt:'Enter a email address...',validType:'email'">
+    </div>
+    <div class="line">
+
+    </div>
+</div>
+
+<p style="height: 40px;">&nbsp;</p>
+
+<div class="easyui-panel" title="单选/多选下拉" data-options="collapsible:true,width:600" style="padding-top:20px;">
+    <div class="line">
+        <input class="easyui-tagbox" label="Language(单选)" data-options="
+				url: '../data/tagbox_data1.json',
+				method: 'get',
+				value: '1',
+				valueField: 'id',
+				textField: 'text',
+				limitToList: true,
+				hasDownArrow: true,
+				width:'400',height:32,validateOnCreate:true,required:true,editable:false,multiple:false,
+				labelPosition:'before',labelWidth:120,labelAlign:'right',
+				prompt: 'Select a Language'
+				">
+    </div>
+    <div class="line">
+        <input class="easyui-tagbox" label="Language(多选)" data-options="
+				url: '../data/tagbox_data1.json',
+				method: 'get',
+				value: '1,2',
+				valueField: 'id',
+				textField: 'text',
+				limitToList: true,
+				hasDownArrow: true,
+				width:'400',height:32,validateOnCreate:true,required:true,editable:false,
+				labelPosition:'before',labelWidth:120,labelAlign:'right',
+				prompt: 'Select a Language'
+				">
+    </div>
+    <h2>TagBox（文本框）</h2>
+    <h3>1,支持单选,多选下拉框</h3>
+</div>
+
+<p style="height: 40px;">&nbsp;</p>
+
+<div class="easyui-panel" title="模糊查询/参照" data-options="collapsible:true,width:600" style="padding-top:20px;">
+    <div class="line">
+        <select class="easyui-taggridbox" label="Select Item(模糊):" data-options="
+					panelWidth: 500,
+					idField: 'itemid',
+					textField: 'productname',
+					url: '../data/taggrid_data1.json',
+					method: 'get',
+					columns: [[
+						{field:'itemid',title:'Item ID',width:80},
+						{field:'productname',title:'Product',width:120},
+						{field:'listprice',title:'List Price',width:80,align:'right'},
+						{field:'unitcost',title:'Unit Cost',width:80,align:'right'},
+						{field:'attr1',title:'Attribute',width:200},
+						{field:'status',title:'Status',width:60,align:'center'}
+					]],
+					fitColumns: true,
+					required:true,
+					multiple:false,
+					hasDownArrow: true,
+                    width:'300',height:32,validateOnCreate:true,required:true,editable:true,
+                    labelPosition:'before',labelWidth:200,labelAlign:'right',
+                    prompt: 'Select Item:'
+				">
+        </select>
+    </div>
+
+    <div class="line">
+        <select class="easyui-taggridbox" label="Select Item(参照):" data-options="
+					panelWidth: 500,
+					idField: 'itemid',
+					textField: 'productname',
+					required:true,
+					multiple:false,
+					buttonText:'打开参照',
+					buttonIcon:'icon-search',
+					onClickButton: function(){
+						alert('打开参照');
+					},
+					hasDownArrow: false,pullDown:false,
+                    width:'300',height:32,validateOnCreate:true,required:true,editable:false,
+                    labelPosition:'before',labelWidth:200,labelAlign:'right',
+                    prompt: 'Select Item:'
+				">
+        </select>
+    </div>
+    <div class="line">
+        <select class="easyui-taggridbox" label="Select Item(模糊/参照):" data-options="
+					panelWidth: 500,
+					idField: 'itemid',
+					textField: 'productname',
+					url: '../data/taggrid_data1.json',
+					method: 'get',
+					columns: [[
+						{field:'itemid',title:'Item ID',width:80},
+						{field:'productname',title:'Product',width:120},
+						{field:'listprice',title:'List Price',width:80,align:'right'},
+						{field:'unitcost',title:'Unit Cost',width:80,align:'right'},
+						{field:'attr1',title:'Attribute',width:200},
+						{field:'status',title:'Status',width:60,align:'center'}
+					]],
+					fitColumns: true,
+					required:true,
+					multiple:false,
+					buttonText:'打开参照',
+					buttonIcon:'icon-search',
+					onClickButton: function(){
+						alert('打开参照');
+					},
+					hasDownArrow:false,pullDown:true,
+                    width:'300',height:32,validateOnCreate:true,required:true,editable:true,
+                    labelPosition:'before',labelWidth:200,labelAlign:'right',
+                    prompt: 'Select Item:'
+				">
+        </select>
+    </div>
+</div>
+<p style="height: 40px;">&nbsp;</p>
+
+<div class="easyui-panel" title="日期区间" data-options="collapsible:true,width:600" style="padding-top:20px;">
+    <div class="line">
+        <input class="easyui-doubledatebox" id="cc" name="startDate" name2="endDate" value="" label="DateRange:" labelPosition="before" labelWidth="80"
+               data-options="validateOnCreate:true,required:true,editable:true,width:400"/>
+    </div>
+</div>
+</body>
+</html>

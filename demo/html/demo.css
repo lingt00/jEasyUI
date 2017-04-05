@@ -1,0 +1,30 @@
+body {
+    font-family:verdana,helvetica,arial,sans-serif;
+    padding:20px;
+    font-size:12px;
+    margin:0;
+    text-align: center;
+}
+
+.line{
+    margin-bottom:40px;
+}
+
+.datebox-button-top{
+    text-align: left;
+}
+.datebox-button-bottom{
+    text-align: right;
+}
+.datebox-button-top a,
+.datebox-button-bottom a{
+    display: inline-block;
+    margin: 4px 6px;
+    height: 22px;
+    line-height: 22px;
+    width: auto;
+}
+.datebox-button-middle td{
+    height: 22px;
+    line-height: 22px;
+}
